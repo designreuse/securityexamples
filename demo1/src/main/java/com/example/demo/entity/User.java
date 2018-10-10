@@ -5,16 +5,12 @@ import java.util.Set;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 public class User implements UserDetails{
 	
 	private static final long serialVersionUID = -2395355081760067661L;
 	
-	@JsonView(View.Anonymous.class)
 	private String username;
 	
-	@JsonView(View.Admin.class)
 	private String password;
 	
 	private Set<UserAuthority> authorities;
