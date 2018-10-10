@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
-import org.springframework.security.access.expression.SecurityExpressionOperations;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,23 +23,20 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(value = "api/users/{username}", method = RequestMethod.GET)
-	public User loadUserByUsername(@PathVariable String username) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-		return userService.loadUserByUsername(username);
-	}
-
-	@RequestMapping("/api/users")
-	public MappingJacksonValue getFoo(@AuthenticationPrincipal UserDetails user) {
+	public MappingJacksonValue loadUserByUsername(@PathVariable String username, @AuthenticationPrincipal UserDetails user) {
 		
-		MappingJacksonValue value = new MappingJacksonValue(userService.getAllUsers());
-		if (user instanceof User && ((User)user).isAdminUser()) {
+		MappingJacksonValue value = new MappingJacksonValue(userService.loadUserByUsername(username));
+		if (user instanceof User && ( ((User)user).getUsername().equals(username) || ((User)user).isAdminUser()) ){
 			value.setSerializationView(View.Admin.class);
 		} else {
 			value.setSerializationView(View.User.class);
 		}
 		return value;
-		
+	}
+
+	@RequestMapping(value = "/api/users", method = RequestMethod.GET)
+	public Collection<User> getAllUsers() {
+		return userService.getAllUsers();
 	}
 	
 	@JsonView(View.Admin.class)
