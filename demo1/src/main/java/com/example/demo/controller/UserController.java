@@ -39,11 +39,11 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
-	@JsonView(View.Admin.class)
+	/*@JsonView(View.Admin.class)
 	@RequestMapping(value = "api/users/{username}/full", method = RequestMethod.GET)
 	public User loadfullUserByUsername(@PathVariable String username) {
 		return userService.loadUserByUsername(username);
-	}
+	}*/
 	
 
 }
