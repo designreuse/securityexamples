@@ -1,12 +1,19 @@
 package com.example.demo.entity;
 
+import com.example.demo.config.SecuredEntityViewPolicy;
+import com.fasterxml.jackson.annotation.JsonView;
+
+@SecuredEntityViewPolicy(value = "MedicalViewPolicy")
 public class LaboratoryResult {
 	
 	private Long id;
 	private Long valueA;
+	
+	@JsonView(View.Extended.class)
 	private String valueC;
 	private Boolean valueD;
 	
+	@JsonView(View.Detail.class)
 	private User patient;
 	
 	public LaboratoryResult(Long id, Long valueA, String valueC, Boolean valueD, User patient) {
@@ -21,6 +28,9 @@ public class LaboratoryResult {
 	public LaboratoryResult() {
 		super();
 	}
+	
+	//Optional create customized view in entity class
+	//interface SensibleDataView extends View.Detail{}
 
 	public Long getValueA() {
 		return valueA;
@@ -61,5 +71,7 @@ public class LaboratoryResult {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
 
 }

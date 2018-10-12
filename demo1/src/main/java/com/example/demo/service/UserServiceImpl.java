@@ -22,10 +22,10 @@ public class UserServiceImpl implements UserService {
 		users.add(new User("patient1", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_PATIENT"}));
 		users.add(new User("patient2", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_PATIENT"}));
 		users.add(new User("patient3", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_PATIENT"}));
-		users.add(new User("admin", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_ADMIN"}));
+		users.add(new User("admin", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_ADMIN", "READ_LABORITORY_RESULTS", "READ_SENSITIVE_PATIENT_DATA"}));
 		users.add(new User("doctor1", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_DOCTOR", "READ_LABORITORY_RESULTS", "READ_SENSITIVE_PATIENT_DATA"}));
-		users.add(new User("doctor2", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_DOCTOR", "READ_LABORITORY_RESULTS"}));
-		
+		users.add(new User("doctor2", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_DOCTOR", "READ_LABORITORY_RESULTS", "READ_SENSITIVE_PATIENT_DATA"}));
+		users.add(new User("assistent", passwordEncoder.encode("password"), new String[]{"ROLE_USER", "ROLE_ASSISTENT", "READ_LABORITORY_RESULTS"}));	
 		//Mapping ROLE_DOCTOR --> READ_LABORITORY_RESULTS
 	}
 

@@ -29,7 +29,7 @@ public class UserController {
 		if (user instanceof User && ( ((User)user).getUsername().equals(username) || ((User)user).isAdminUser()) ){
 			value.setSerializationView(View.Admin.class);
 		} else {
-			value.setSerializationView(View.User.class);
+			value.setSerializationView(View.Simple.class);
 		}
 		return value;
 	}
