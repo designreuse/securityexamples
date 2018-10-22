@@ -17,10 +17,10 @@ public class LaboratoryResultServiceImpl implements LaboratoryResultService {
 	@Autowired
 	public LaboratoryResultServiceImpl(UserService userService) {
 		laboratoryResults = new ArrayList<>();
-		laboratoryResults.add(new LaboratoryResult(1L, 123L, 456L, "Test1", true, userService.loadUserByUsername("patient1")));
-		laboratoryResults.add(new LaboratoryResult(2L, 321L, 654L, "Test2", false, userService.loadUserByUsername("patient1")));
-		laboratoryResults.add(new LaboratoryResult(3L, 132L, 465L, "Test3", true, userService.loadUserByUsername("patient2")));
-		laboratoryResults.add(new LaboratoryResult(4L, 312L, 546L, "Test4", false, userService.loadUserByUsername("patient3")));
+		laboratoryResults.add(new LaboratoryResult(1L, 123L, "Test1", true, userService.loadUserByUsername("patient1")));
+		laboratoryResults.add(new LaboratoryResult(2L, 321L, "Test2", false, userService.loadUserByUsername("patient1")));
+		laboratoryResults.add(new LaboratoryResult(3L, 132L, "Test3", true, userService.loadUserByUsername("patient2")));
+		laboratoryResults.add(new LaboratoryResult(4L, 312L, "Test4", false, userService.loadUserByUsername("patient3")));
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.AbstractMappingJack
 
 import com.example.demo.entity.View;
 
-//@ControllerAdvice
+@ControllerAdvice
 public class JsonViewConfiguration extends AbstractMappingJacksonResponseBodyAdvice {
 	
 	@Autowired

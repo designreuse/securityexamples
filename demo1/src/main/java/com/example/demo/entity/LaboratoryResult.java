@@ -8,7 +8,6 @@ public class LaboratoryResult {
 	
 	private Long id;
 	private Long valueA;
-	private Long valueB;
 	
 	@JsonView(View.Extended.class)
 	private String valueC;
@@ -17,11 +16,10 @@ public class LaboratoryResult {
 	@JsonView(View.Detail.class)
 	private User patient;
 	
-	public LaboratoryResult(Long id, Long valueA, Long valueB, String valueC, Boolean valueD, User patient) {
+	public LaboratoryResult(Long id, Long valueA, String valueC, Boolean valueD, User patient) {
 		super();
 		this.id = id;
 		this.valueA = valueA;
-		this.setValueB(valueB);
 		this.valueC = valueC;
 		this.valueD = valueD;
 		this.patient = patient;
@@ -72,14 +70,6 @@ public class LaboratoryResult {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getValueB() {
-		return valueB;
-	}
-
-	public void setValueB(Long valueB) {
-		this.valueB = valueB;
 	}
 
 
