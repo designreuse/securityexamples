@@ -1,0 +1,23 @@
+<h1>
+  Laboratory Results
+</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">valueA</th>
+      <th scope="col">valueB</th>
+      <th scope="col">patient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of list" (click)=selectResult(result)>
+      <td>{{result.id}}</td>
+      <td>{{result.valueA}}</td>
+      <td>{{result.valueB}}</td>
+      <td>{{result.patient.username}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<app-laboratoryresultdetail [result]="selectedResult"></app-laboratoryresultdetail>
