@@ -52,7 +52,7 @@ class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
 		grantedAuthorityMapper.setPrefix("ROLE_");
 		grantedAuthorityMapper.setConvertToUpperCase(true);*/
     	
-        KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();//new CustomKeycloakAuthenticationProvider();//keycloakAuthenticationProvider();
+        KeycloakAuthenticationProvider keycloakAuthenticationProvider = new CustomKeycloakAuthenticationProvider();//keycloakAuthenticationProvider();
         keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
         /*keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new GrantedAuthoritiesMapper() {
 		
