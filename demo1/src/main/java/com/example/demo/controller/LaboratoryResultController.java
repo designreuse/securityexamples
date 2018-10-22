@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,8 @@ public class LaboratoryResultController {
 	@Autowired
 	LaboratoryResultService laboratoryResultService;
 	
-	@RequestMapping(value = "api/laboratory_results", method = RequestMethod.GET)
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "api/laboratory-results", method = RequestMethod.GET)
 	Collection<LaboratoryResult> getAllResults(){
 		return laboratoryResultService.getAllResults();
 	}

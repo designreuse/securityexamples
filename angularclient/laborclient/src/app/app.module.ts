@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule }    from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,9 @@ import { LaboratoryresultdetailComponent } from './laboratoryresultdetail/labora
 import { LaboratoryresultlistComponent } from './laboratoryresultlist/laboratoryresultlist.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { WelcomeComponent } from './welcome/welcome.component';
+
+import { TokenInterceptor } from './keycloak/token-interceptor';
+import { AuthService } from './keycloak/auth.service';
 
 
 @NgModule({
@@ -26,7 +29,16 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {provide: APP_INITIALIZER, useFactory: kcFactory, deps: [AuthService], multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function kcFactory(keycloakService: AuthService) {
+  return () => keycloakService.init();
+}
+
