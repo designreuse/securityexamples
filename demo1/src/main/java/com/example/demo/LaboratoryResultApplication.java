@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class DemoApplication {
+public class LaboratoryResultApplication {
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -15,6 +15,6 @@ public class DemoApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(LaboratoryResultApplication.class, args);
 	}
 }
