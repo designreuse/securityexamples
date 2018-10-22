@@ -12,18 +12,24 @@ export class LaboratoryresultlistComponent implements OnInit {
 
   list: LaboratoryResult[];
   selectedResult: LaboratoryResult;
+  error: any;
+
   selectResult(result: LaboratoryResult) : void{
     this.selectedResult=result;
   } 
   getResults() : void {
     this.laboratoryService.getAllLaboratoryResults().subscribe((results) => {
       this.list=results
+    }, (error) => {
+      this.error = error;
+      console.log(error);
     });
   }
 
   constructor(private laboratoryService: LaboratoryService) { }
 
   ngOnInit() {
+    this.error=undefined;
     this.getResults();
   }
 

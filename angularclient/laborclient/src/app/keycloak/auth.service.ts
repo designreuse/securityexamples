@@ -9,7 +9,7 @@ export class AuthService {
   init(): Promise<any> {
     return new Promise((resolve, reject) => {
       const keycloakAuth = Keycloak('assets/keycloak/keycloak.json');
-      keycloakAuth.init({onLoad: 'login-required'})
+      keycloakAuth.init({onLoad: 'login-required'}) //check-sso
         .success(() => {
           AuthService.auth.loggedIn = true;
           AuthService.auth.keycloak = keycloakAuth;
