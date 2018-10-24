@@ -1,30 +1,23 @@
 package com.example.demo.entity;
 
-import com.example.demo.config.SecuredEntityViewPolicy;
-import com.fasterxml.jackson.annotation.JsonView;
-
-@SecuredEntityViewPolicy(value = "MedicalViewPolicy")
+//@SecuredEntityViewPolicy(value = "MedicalViewPolicy")
 public class LaboratoryResult {
 	
 	private Long id;
 	private Long valueA;
 	private Long valueB;
-	
-	@JsonView(View.Extended.class)
 	private String valueC;
 	private Boolean valueD;
+	private Long patientSvnr;
 	
-	@JsonView(View.Detail.class)
-	private User patient;
-	
-	public LaboratoryResult(Long id, Long valueA, Long valueB, String valueC, Boolean valueD, User patient) {
+	public LaboratoryResult(Long id, Long valueA, Long valueB, String valueC, Boolean valueD, Long patientSvnr) {
 		super();
 		this.id = id;
 		this.valueA = valueA;
 		this.setValueB(valueB);
 		this.valueC = valueC;
 		this.valueD = valueD;
-		this.patient = patient;
+		this.setPatientSvnr(patientSvnr);
 	}
 
 	public LaboratoryResult() {
@@ -58,14 +51,6 @@ public class LaboratoryResult {
 		this.valueD = valueD;
 	}
 
-	public User getPatient() {
-		return patient;
-	}
-
-	public void setPatient(User patient) {
-		this.patient = patient;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -80,6 +65,14 @@ public class LaboratoryResult {
 
 	public void setValueB(Long valueB) {
 		this.valueB = valueB;
+	}
+
+	public Long getPatientSvnr() {
+		return patientSvnr;
+	}
+
+	public void setPatientSvnr(Long patientSvnr) {
+		this.patientSvnr = patientSvnr;
 	}
 
 

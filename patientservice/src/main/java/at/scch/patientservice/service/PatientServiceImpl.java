@@ -3,14 +3,21 @@ package at.scch.patientservice.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import at.scch.patientservice.entity.Patient;
 import at.scch.patientservice.exception.NotFoundException;
 
 @Service
 public class PatientServiceImpl implements PatientService {
+	
+	@Autowired
+    private KeycloakRestTemplate template;
 	
 	private List<Patient> patients;
 	
@@ -27,9 +34,15 @@ public class PatientServiceImpl implements PatientService {
 	public Iterable<Patient> getAllPatients() {
 		return patients;
 	}
-
+	
 	@Override
 	public Patient getPatient(Long svnr) {
+		Patient p = getPatientBySvnr(svnr);
+		p.setLaborityResults(getLaboratoryResultsOfPatient(svnr));
+		return p;
+	}
+	
+	private Patient getPatientBySvnr(Long svnr) {
 		for(Patient p:patients) {
 			if(p.getSvnr().equals(svnr)) {
 				return p;
@@ -37,5 +50,18 @@ public class PatientServiceImpl implements PatientService {
 		}
 		throw new NotFoundException();
 	}
+	
+	private Object[] getLaboratoryResultsOfPatient(Long svnr) {
+		try {
+			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/api/laboratory-results")
+					.queryParam("patientsvnr", svnr);
+			ResponseEntity<Object[]> response = template.getForEntity(builder.toUriString(), Object[].class);
+			return response.getBody();
+		}catch (HttpClientErrorException e) {
+			return null;
+		}
+	}
+
+
 
 }

@@ -11,6 +11,8 @@ public class Patient {
 	private String address;
 	private String gender;
 	
+	private Object[] laborityResults;
+	
 	public Patient(String firstName, String lastName, String tel, Long svnr, String bloodGroup, String address,
 			String gender) {
 		super();
@@ -81,6 +83,14 @@ public class Patient {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public Object[] getLaborityResults() {
+		return laborityResults;
+	}
+
+	public void setLaborityResults(Object[] laborityResults) {
+		this.laborityResults = laborityResults;
 	}
 
 }

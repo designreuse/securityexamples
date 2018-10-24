@@ -10,6 +10,6 @@ public interface LaboratoryResultService {
 	
 	@PreAuthorize("hasAuthority('ROLE_READ_LABORITY_RESULT')")
 	//@PreAuthorize("hasAuthority('ROLE_DOCTOR')")
-	Collection<LaboratoryResult> getAllResults();
+	Collection<LaboratoryResult> getAllResults(Long patientSvnr);
 
 }

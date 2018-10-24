@@ -12,11 +12,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let result of list" (click)=selectResult(result)>
+    <tr *ngFor="let result of list" (click)=selectResult(result) class="laboratoryResultListEntry">
       <td>{{result.id}}</td>
       <td>{{result.valueA}}</td>
       <td>{{result.valueB}}</td>
-      <td>{{result.patient.username}}</td>
+      <td *ngIf="result.patientSvnr"><a href="">{{result.patientSvnr}}</a></td>
     </tr>
   </tbody>
 </table>

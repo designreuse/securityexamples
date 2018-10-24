@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackageClasses = {LaboratoryResultApplication.class, at.scch.securitylibary.SecuritylibaryApplication.class} )
 public class LaboratoryResultApplication {
 	
 	@Bean
