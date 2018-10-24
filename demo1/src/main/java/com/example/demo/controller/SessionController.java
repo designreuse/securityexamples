@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.config.authentication.CurrentAuthentication;
-import com.example.demo.config.authentication.CustomAuthenticationEntity;
+import com.example.demo.util.AuthenticationResolver;
+import com.example.demo.util.CustomAuthenticationEntity;
 
 @RestController
 public class SessionController {
@@ -22,8 +22,8 @@ public class SessionController {
 	}
 	
 	@RequestMapping("/authentication")
-	public Object user(Principal principal, HttpServletRequest request, @CurrentAuthentication CustomAuthenticationEntity auth) throws ServletException {
-		return auth;
+	public Object user() throws ServletException {
+		return AuthenticationResolver.resolveCurrentAuthentication();
 	}
 
 }
