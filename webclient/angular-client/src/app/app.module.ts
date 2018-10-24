@@ -14,6 +14,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 import { TokenInterceptor } from './keycloak/token-interceptor';
 import { AuthService } from './keycloak/auth.service';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AuthService } from './keycloak/auth.service';
     NavbarComponent,
     LaboratoryresultdetailComponent,
     LaboratoryresultlistComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,6 @@ import { AuthService } from './keycloak/auth.service';
 })
 export class AppModule { }
 
-export function kcFactory(keycloakService: AuthService) {
-  return () => keycloakService.init();
+export function kcFactory(authService: AuthService) {
+  return () => authService.init();
 }

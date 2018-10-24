@@ -1,0 +1,29 @@
+<h1>
+  User Profile
+</h1>
+<div *ngIf="userProfile">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th scope="row">username</th>
+        <td>{{userProfile.username}}</td>
+      </tr>
+      <tr>
+        <th scope="row">firstName</th>
+        <td>{{userProfile.firstName}}</td>
+      </tr>
+      <tr>
+        <th scope="row">lastName</th>
+        <td>{{userProfile.lastName}}</td>
+      </tr>
+      <tr>
+        <th scope="row">email</th>
+        <td>{{userProfile.email}}</td>
+      </tr>
+      <tr>
+        <th scope="row">emailVerified</th>
+        <td>{{userProfile.emailVerified}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

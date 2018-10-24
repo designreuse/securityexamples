@@ -1,0 +1,6 @@
+.nav-item:hover {
+    cursor: pointer;
+}
+.dropdown-item:hover{
+    cursor: pointer;
+}

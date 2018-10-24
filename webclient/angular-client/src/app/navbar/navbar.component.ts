@@ -9,13 +9,30 @@ import { AuthService } from '../keycloak/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  userProfile: any;
+
   logout() : void{
     this.authService.logout();
   }
 
-  constructor(private authService: AuthService) { }
+  login() : void{
+    AuthService.auth.keycloak.login();
+  }
+
+  hasRole(role:String) : boolean{
+    return this.authService.hasRole(role);
+  }
+
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
+    if(!AuthService.auth){
+      return;
+    }
+    this.authService.getUserProfile().then(user => {
+      this.userProfile = user;
+    });
   }
 
 }
