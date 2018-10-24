@@ -38,7 +38,7 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public Patient getPatient(Long svnr) {
 		Patient p = getPatientBySvnr(svnr);
-		p.setLaborityResults(getLaboratoryResultsOfPatient(svnr));
+		p.setLaboratorityResults(getLaboratoryResultsOfPatient(svnr));
 		return p;
 	}
 	

@@ -1,0 +1,37 @@
+<h1>
+  Patient
+</h1>
+<table *ngIf="patient" class="table table-striped">
+  <tbody>
+    <tr>
+      <th scope="row">svnr</th>
+      <td>{{patient.svnr}}</td>
+    </tr>
+    <tr>
+      <th scope="row">firstName</th>
+      <td>{{patient.firstName}}</td>
+    </tr>
+    <tr>
+      <th scope="row">lastName</th>
+      <td>{{patient.lastName}}</td>
+    </tr>
+    <tr>
+      <th scope="row">address</th>
+      <td>{{patient.address}}</td>
+    </tr>
+    <tr>
+      <th scope="row">tel</th>
+      <td>{{patient.tel}}</td>
+    </tr>
+    <tr>
+      <th scope="row">bloodGroup</th>
+      <td>{{patient.bloodGroup}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="patient && patient.laboratorityResults">
+  <h2>Laboratory Results</h2>
+  <p *ngIf="patient.laboratorityResults.length<=0">No laboratory results yet</p>
+  <app-laboratoryresultlist [list]="patient.laboratorityResults" *ngIf="patient.laboratorityResults.length>0"></app-laboratoryresultlist>
+</div>

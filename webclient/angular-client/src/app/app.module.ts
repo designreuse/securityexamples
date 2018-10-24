@@ -15,6 +15,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { TokenInterceptor } from './keycloak/token-interceptor';
 import { AuthService } from './keycloak/auth.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { LaboratoryresultComponent } from './laboratoryresult/laboratoryresult.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     LaboratoryresultdetailComponent,
     LaboratoryresultlistComponent,
     WelcomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PatientListComponent,
+    PatientDetailComponent,
+    LaboratoryresultComponent
   ],
   imports: [
     BrowserModule,

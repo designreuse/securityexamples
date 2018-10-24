@@ -1,5 +1,3 @@
-import { User } from "./user";
-
 export class LaboratoryResult{
 
     id: number;
@@ -7,7 +5,6 @@ export class LaboratoryResult{
     valueB?: number;
     valueC?: String;
     valueD?: boolean;
-
-    patient?: User;
+    patientSvnr?: number;
     
 }

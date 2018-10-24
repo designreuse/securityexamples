@@ -1,5 +1,5 @@
 <div *ngIf="result">
-  <h2>Detail of {{result.id}}</h2>
+  <h1>Detail of {{result.id}}</h1>
   <table class="table table-striped">
     <tbody>
       <tr>
@@ -24,4 +24,39 @@
       </tr>
     </tbody>
   </table>
+
+
+  <div *ngIf="patient" >
+    <h2>
+      Patient
+    </h2>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th scope="row">svnr</th>
+          <td>{{patient.svnr}}</td>
+        </tr>
+        <tr>
+          <th scope="row">firstName</th>
+          <td>{{patient.firstName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">lastName</th>
+          <td>{{patient.lastName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">address</th>
+          <td>{{patient.address}}</td>
+        </tr>
+        <tr>
+          <th scope="row">tel</th>
+          <td>{{patient.tel}}</td>
+        </tr>
+        <tr>
+          <th scope="row">bloodGroup</th>
+          <td>{{patient.bloodGroup}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

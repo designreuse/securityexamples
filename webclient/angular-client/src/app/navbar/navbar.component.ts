@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
     }
     this.authService.getUserProfile().then(user => {
       this.userProfile = user;
-    });
+    }).catch(err=>{});
   }
 
 }

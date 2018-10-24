@@ -9,7 +9,9 @@ import com.example.demo.entity.LaboratoryResult;
 public interface LaboratoryResultService {
 	
 	@PreAuthorize("hasAuthority('ROLE_READ_LABORITY_RESULT')")
-	//@PreAuthorize("hasAuthority('ROLE_DOCTOR')")
 	Collection<LaboratoryResult> getAllResults(Long patientSvnr);
+	
+	@PreAuthorize("hasAuthority('ROLE_READ_LABORITY_RESULT')")
+	LaboratoryResult getResult(Long id);
 
 }

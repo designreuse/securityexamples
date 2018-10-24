@@ -37,4 +37,14 @@ public class LaboratoryResultServiceImpl implements LaboratoryResultService {
 		return result;
 	}
 
+	@Override
+	public LaboratoryResult getResult(Long id) {
+		for(LaboratoryResult i : laboratoryResults) {
+			if(i.getId().equals(id)) {
+				return i;
+			}
+		}
+		return null;
+	}
+
 }

@@ -11,7 +11,7 @@ public class Patient {
 	private String address;
 	private String gender;
 	
-	private Object[] laborityResults;
+	private Object[] laboratorityResults;
 	
 	public Patient(String firstName, String lastName, String tel, Long svnr, String bloodGroup, String address,
 			String gender) {
@@ -85,12 +85,11 @@ public class Patient {
 		this.gender = gender;
 	}
 
-	public Object[] getLaborityResults() {
-		return laborityResults;
+	public Object[] getLaboratorityResults() {
+		return laboratorityResults;
 	}
 
-	public void setLaborityResults(Object[] laborityResults) {
-		this.laborityResults = laborityResults;
+	public void setLaboratorityResults(Object[] laboratorityResults) {
+		this.laboratorityResults = laboratorityResults;
 	}
-
 }

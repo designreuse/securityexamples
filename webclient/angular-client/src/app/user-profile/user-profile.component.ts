@@ -18,7 +18,6 @@ export class UserProfileComponent implements OnInit {
     }
     this.authService.getUserProfile().then(user => {
       this.userProfile = user;
-      console.log(user);
     });
   }
 

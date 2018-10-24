@@ -58,7 +58,7 @@ export class AuthService {
 
   getUserProfile(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      if (!AuthService.auth || !AuthService.auth.keycloak) {
+      if (!AuthService.auth || !AuthService.auth.keycloak || !AuthService.auth.keycloak.authenticated) {
         reject();
       }
       else if (AuthService.auth.userProfile) {
