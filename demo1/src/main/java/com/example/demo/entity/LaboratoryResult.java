@@ -1,12 +1,20 @@
 package com.example.demo.entity;
 
-//@SecuredEntityViewPolicy(value = "MedicalViewPolicy")
+import com.fasterxml.jackson.annotation.JsonView;
+
+import at.scch.securitylibary.config.SecuredEntityViewPolicy;
+import at.scch.securitylibary.config.Views;
+
+@SecuredEntityViewPolicy(value = "MedicalViewPolicy")
 public class LaboratoryResult {
 	
 	private Long id;
 	private Long valueA;
 	private Long valueB;
+	
+	@JsonView(Views.Extended.class)
 	private String valueC;
+	@JsonView(Views.Extended.class)
 	private Boolean valueD;
 	private Long patientSvnr;
 	

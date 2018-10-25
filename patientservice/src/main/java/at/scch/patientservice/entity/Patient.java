@@ -1,5 +1,11 @@
 package at.scch.patientservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import at.scch.securitylibary.config.SecuredEntityViewPolicy;
+import at.scch.securitylibary.config.Views;
+
+@SecuredEntityViewPolicy(value = "PatientViewPolicy")
 public class Patient {
 	
 	private String firstName;
@@ -7,8 +13,10 @@ public class Patient {
 	
 	private String tel;
 	private Long svnr;
-	private String bloodGroup;
 	private String address;
+	
+	@JsonView(Views.Detail.class)
+	private String bloodGroup;
 	private String gender;
 	
 	private Object[] laboratorityResults;

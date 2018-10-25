@@ -4,14 +4,10 @@ import java.lang.annotation.Annotation;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 
-import at.scch.securitylibary.util.AuthorityChecker;
-
-@Component
-public class JsonViewCalculator {
+public abstract class JsonViewCalculator {
 	
-	public Class<?> getJSONView(Object responseValue){
+	protected Class<?> getJsonView(Object responseValue){
 		
 		String policy = getViewPolicy(responseValue);
 		if(policy == null) {
@@ -20,23 +16,12 @@ public class JsonViewCalculator {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
-		switch(policy) {
-			case "MedicalViewPolicy":
-				if(AuthorityChecker.hasAuthority(authentication, "READ_SENSITIVE_PATIENT_DATA")) {
-					return Views.Detail.class;
-				}
-				if(AuthorityChecker.hasAuthority(authentication, "READ_LABORITORY_RESULTS")) {
-					return Views.Extended.class;
-				}
-				return Views.Simple.class;
-			
-		}
-		return null;
-		
-		
+		return getJsonView(policy, responseValue, authentication);	
 	}
+	
+	protected abstract Class<?> getJsonView(String viewPolicy, final Object responseValue, final Authentication auth);
 
-	private String getViewPolicy(Object responseValue) {
+	protected String getViewPolicy(Object responseValue) {
 		if(responseValue==null) {
 			return null;
 		}
@@ -50,7 +35,7 @@ public class JsonViewCalculator {
 		return null;
 	}
 
-	private Class<?> getResponseType(Object responseValue) {
+	protected Class<?> getResponseType(Object responseValue) {
 		if(!(responseValue instanceof Iterable)) {
 			return responseValue.getClass();
 		}

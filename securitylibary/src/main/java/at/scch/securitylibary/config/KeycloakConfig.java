@@ -29,7 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 @ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
-class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
+public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
 	
 	@Autowired
     public KeycloakClientRequestFactory keycloakClientRequestFactory;
@@ -44,16 +44,7 @@ class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
     	
         KeycloakAuthenticationProvider keycloakAuthenticationProvider = new CustomKeycloakAuthenticationProvider();//keycloakAuthenticationProvider();
         keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(grantedAuthorityMapper);
-        /*keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new GrantedAuthoritiesMapper() {
-		
-			@Override
-			public Collection<? extends GrantedAuthority> mapAuthorities(
-					Collection<? extends GrantedAuthority> authorities) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-        	
-        });*/
+        
         auth.authenticationProvider(keycloakAuthenticationProvider);
     }
     
