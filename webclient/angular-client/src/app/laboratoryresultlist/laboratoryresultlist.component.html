@@ -1,0 +1,18 @@
+<table class="table table-hover" *ngIf="list && list.length>0">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">valueA</th>
+      <th scope="col">valueB</th>
+      <th scope="col">patient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of list" routerLink="/results/{{result.id}}" class="laboratoryResultListEntry">
+      <td>{{result.id}}</td>
+      <td>{{result.valueA}}</td>
+      <td>{{result.valueB}}</td>
+      <td *ngIf="result.patientSvnr"><a routerLink="/patients/{{result.patientSvnr}}">{{result.patientSvnr}}</a></td>
+    </tr>
+  </tbody>
+</table>

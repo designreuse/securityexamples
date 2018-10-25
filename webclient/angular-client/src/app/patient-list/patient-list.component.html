@@ -1,0 +1,19 @@
+<h1>
+  Patients
+</h1>
+<table class="table table-hover" *ngIf="list && list.length>0">
+  <thead>
+    <tr>
+      <th scope="col">#svnr</th>
+      <th scope="col">firstName</th>
+      <th scope="col">lastName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of list" (click)=selectPatient(patient) class="patientListEntry">
+      <td>{{patient.svnr}}</td>
+      <td>{{patient.firstName}}</td>
+      <td>{{patient.lastName}}</td>
+    </tr>
+  </tbody>
+</table>
