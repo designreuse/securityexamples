@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package at.scch.laboratoryservice.config;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;

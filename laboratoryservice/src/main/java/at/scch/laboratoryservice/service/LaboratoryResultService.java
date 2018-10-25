@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package at.scch.laboratoryservice.service;
 
 import java.util.Collection;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 
-import com.example.demo.entity.LaboratoryResult;
+import at.scch.laboratoryservice.entity.LaboratoryResult;
 
 public interface LaboratoryResultService {
 	

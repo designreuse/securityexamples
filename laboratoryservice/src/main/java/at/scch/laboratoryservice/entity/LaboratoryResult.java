@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package at.scch.laboratoryservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 

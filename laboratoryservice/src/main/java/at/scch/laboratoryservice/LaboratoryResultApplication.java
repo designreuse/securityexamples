@@ -1,4 +1,4 @@
-package com.example.demo;
+package at.scch.laboratoryservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

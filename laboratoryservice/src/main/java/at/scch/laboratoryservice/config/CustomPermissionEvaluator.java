@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package at.scch.laboratoryservice.config;
 
 import java.io.Serializable;
 

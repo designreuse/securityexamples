@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package at.scch.laboratoryservice.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.LaboratoryResult;
+import at.scch.laboratoryservice.entity.LaboratoryResult;
 
 @Service
 public class LaboratoryResultServiceImpl implements LaboratoryResultService {

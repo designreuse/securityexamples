@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package at.scch.laboratoryservice.controller;
 
 import java.util.Collection;
 
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.service.LaboratoryResultService;
-
-import com.example.demo.entity.LaboratoryResult;
+import at.scch.laboratoryservice.entity.LaboratoryResult;
+import at.scch.laboratoryservice.service.LaboratoryResultService;
 
 @RestController
 public class LaboratoryResultController {
