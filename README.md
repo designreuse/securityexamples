@@ -257,17 +257,16 @@ export class AuthService {
       1. LaboratoryResultController + Authentication Point (HTTP-Security vs. MethodLevelSecurity)
    	  2. Show redirect in Browser (Secretary vs Doctor)
    3. Field-Level-Security 
-      1. PatientController, PatientEntity, CustomJSONView Calculator
+      1. LaboratoryResultEntity, CustomJSONView Calculator
       2. Postman (Assistent vs Doctor)
    4. Show Service Communication (Doctor vs Secretary) 
    5. Show Logout and Authentication Endpoint
 3. Angular Client
-   1. Authentifizierung
-      1. AuthService: Start-Up vs. On-Demand
-      2. AuthService: LoadUserProfile, HasRole
-      3. Unauthorized: Open Patients -Redirect
-      4. Secretary: No Results (Role check), Open Patients, Open Profile (configurable which user properties visible for client), Logout
-      5. Assistent: Hiden fields, Add Permission to see hidden fields
+   1. AuthService: Start-Up vs. On-Demand
+   2. AuthService: LoadUserProfile, HasRole
+   3. Unauthorized: Open Patients -Redirect
+   4. Secretary: No Results (Role check), Open Patients, Open Profile (configurable which user properties visible for client), Logout
+   5. Assistent: Hiden fields, Add Permission to see hidden fields
 
 
 ## Todos
