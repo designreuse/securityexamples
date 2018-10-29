@@ -1,0 +1,67 @@
+/*.login-pf body {
+    background: DimGrey none;
+}*/
+
+/*#kc-header {
+    background: url("../img/red-hat-logo.png") no-repeat top center;
+    /*height: 45px;
+    //width: 200px;
+}*/
+
+div#kc-header-wrapper{
+    display: none;
+}
+
+#kc-header{
+    background: url("../img/stiwa-group.png");
+    background-repeat: no-repeat;
+    background-position:  bottom center;
+    background-size: auto 80%;
+    padding: 80px 10px 20px;
+}
+
+body {
+    background-image: url('../img/gray.jpg')!important;
+    background-size: cover;
+}
+
+.login-pf-page .card-pf{
+    border-radius: 10px;
+    border: 1px solid #0088ce;
+}
+
+/*.login-pf a{
+    color: #005A93;
+}
+
+.login-pf a:hover{
+    color: #005A93;
+}*/
+
+/*.btn-primary{
+    background-color: #005A93 !important;
+    background-image: linear-gradient(to bottom, #39a5dc 0%, #005A93 100%) !important;
+}*/
+
+/*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #005A93 !important;
+    background-image: linear-gradient(to bottom, #39a5dc 0%, #005A93 100%);
+}*/
+
+
+
+/*div#kc-header::after {
+    content: 'FeedHenry Work Force Management';
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 15px;
+}*/
+
+/*div#kc-header {
+    width:100%;
+    background-color: rgb(40,53,147);
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+    padding-right: 2em;
+    padding-left: 3em;
+}*/

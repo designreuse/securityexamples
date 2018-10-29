@@ -272,13 +272,12 @@ export class AuthService {
 
 ## Todos
 
-1. Encrypting Database
+1. (Encrypting Database)
 2. Keycloak API
 3. Keycloak Flow
 4. Keycloak Authorization
-5. Customizing Login-Page
-6. Webclient Authentication without Javascript Adapter
-7. Service to Service authentication
+5. Webclient Authentication without Javascript Adapter
+6. Service to Service authentication
 
 
 
