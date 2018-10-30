@@ -11,7 +11,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       const keycloakAuth = Keycloak('assets/keycloak/keycloak.json');
       console.log(keycloakAuth);
-      keycloakAuth.init({ checkLoginIframe: false, onLoad: 'check-sso' }) //login-required {onLoad: 'check-sso'}
+      keycloakAuth.init({ checkLoginIframe: false, onLoad: 'check-sso' }) //{onLoad: 'login-required'}
         .then(() => {
           AuthService.auth.loggedIn = keycloakAuth.authenticated;
           AuthService.auth.keycloak = keycloakAuth;

@@ -3,11 +3,11 @@ package at.scch.patientservice.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import at.scch.patientservice.entity.Patient;
@@ -17,7 +17,7 @@ import at.scch.patientservice.exception.NotFoundException;
 public class PatientServiceImpl implements PatientService {
 	
 	@Autowired
-    private KeycloakRestTemplate template;
+    private RestTemplate template;
 	
 	private List<Patient> patients;
 	
