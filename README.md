@@ -172,6 +172,33 @@ public class CustomJsonViewCalculator extends JsonViewCalculator{
 
 ### Inter-Service-Communication
 
+#### Feign Configuration
+
+````java
+@Configuration //Apply this configuration to all feign clients
+public class KeycloakFeignConfiguration{
+	
+	public static final String AUTHORIZATION_HEADER = "Authorization";
+	
+	@Bean
+	public RequestInterceptor keycloakInterceptor() {
+		return new RequestInterceptor() {
+
+			@Override
+			public void apply(RequestTemplate template) {
+				KeycloakSecurityContext context = getKeycloakSecurityContext();
+				if(context!=null) {
+					template.header(AUTHORIZATION_HEADER, "Bearer " + context.getTokenString());
+				}
+			}
+			
+		};
+	}
+}
+````
+
+#### Rest Template Configuration with Ribbon
+
 ````java
 @Autowired
 private KeycloakRestTemplate template;
@@ -181,6 +208,18 @@ private Object[] getLaboratoryResultsOfPatient(Long svnr) {
 	ResponseEntity<Object[]> response = template.getForEntity(builder.toUriString(), Object[].class);
 	return response.getBody();
 	}
+````
+
+````java
+@Bean
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public RestTemplate keycloakRestTemplate(KeycloakClientRequestFactory keycloakClientRequestFactory, LoadBalancerInterceptor interceptor) {
+	KeycloakRestTemplate result = new KeycloakRestTemplate(
+			keycloakClientRequestFactory);
+		// Add the interceptor for load balancing
+		result.getInterceptors().add(interceptor);
+		return result;
+}
 ````
 
 ## Angular Client
