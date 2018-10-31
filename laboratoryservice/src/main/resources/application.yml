@@ -1,0 +1,32 @@
+server:
+   port: 8080
+
+spring:
+   application:
+      name: laboratory-service
+   jackson:
+      mapper:
+         default_view_inclusion: true
+      serialization:
+         WRITE_NULL_MAP_VALUES: false
+         
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+keycloak:
+   auth-server-url: http://localhost:8180/auth/
+   realm: stiwa
+   resource: laboratory-service
+   ssl-required: external
+   principal-attribute: preferred_username
+   use-resource-role-mappings: true
+   credentials:
+      secret: ${keycloak-secret}
+   #bearer-only: true
+   #public-client: false
+   #cors: true 
+      

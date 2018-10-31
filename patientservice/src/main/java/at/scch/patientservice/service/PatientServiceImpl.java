@@ -12,12 +12,17 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import at.scch.patientservice.entity.Patient;
 import at.scch.patientservice.exception.NotFoundException;
+import at.scch.patientservice.feign.LaboratoryResultClient;
+import feign.FeignException;
 
 @Service
 public class PatientServiceImpl implements PatientService {
 	
 	@Autowired
     private RestTemplate template;
+	
+	@Autowired
+	private LaboratoryResultClient laboratoryClient;
 	
 	private List<Patient> patients;
 	
@@ -39,6 +44,7 @@ public class PatientServiceImpl implements PatientService {
 	public Patient getPatient(Long svnr) {
 		Patient p = getPatientBySvnr(svnr);
 		p.setLaboratorityResults(getLaboratoryResultsOfPatient(svnr));
+		//p.setLaboratorityResults(getLaboratoryResultsOfPatientWithRestTemplate(svnr));
 		return p;
 	}
 	
@@ -51,9 +57,17 @@ public class PatientServiceImpl implements PatientService {
 		throw new NotFoundException();
 	}
 	
-	private Object[] getLaboratoryResultsOfPatient(Long svnr) {
+	protected Object[] getLaboratoryResultsOfPatient(Long svnr) {
 		try {
-			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/api/laboratory-results")
+			return laboratoryClient.getLaboratoryResults(svnr);
+		}catch (FeignException e) {
+			return null;
+		}
+	}
+	
+	protected Object[] getLaboratoryResultsOfPatientWithRestTemplate(Long svnr) {
+		try {
+			UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://laboratory-service/api/laboratory-results")
 					.queryParam("patientsvnr", svnr);
 			ResponseEntity<Object[]> response = template.getForEntity(builder.toUriString(), Object[].class);
 			return response.getBody();
