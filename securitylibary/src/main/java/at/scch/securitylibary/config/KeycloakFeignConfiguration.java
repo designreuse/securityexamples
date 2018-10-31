@@ -3,20 +3,20 @@ package at.scch.securitylibary.config;
 import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
-//Configuration //Apply this configuration to all feign clients
+@Configuration //Apply this configuration to all feign clients
 public class KeycloakFeignConfiguration{
 	
 	public static final String AUTHORIZATION_HEADER = "Authorization";
 	
 	@Bean
 	public RequestInterceptor keycloakInterceptor() {
-		//return new KeycloakSecurityContextClientRequestInterceptor();
 		return new RequestInterceptor() {
 
 			@Override

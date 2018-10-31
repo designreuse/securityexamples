@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import at.scch.securitylibary.config.KeycloakFeignConfiguration;
-
-@FeignClient(name = "laboratory-service", configuration = KeycloakFeignConfiguration.class)
+//@FeignClient(name = "laboratory-service", configuration = KeycloakFeignConfiguration.class) //Custom configuration
+@FeignClient(name = "laboratory-service")
 public interface LaboratoryResultClient {
 	
 	@RequestMapping(value = "api/laboratory-results", method = RequestMethod.GET)
