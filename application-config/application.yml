@@ -1,0 +1,17 @@
+keycloak:
+   auth-server-url: http://localhost:8180/auth/
+   realm: stiwa
+   resource: ${spring.application.name}
+   ssl-required: external
+   principal-attribute: preferred_username
+   use-resource-role-mappings: true
+   #bearer-only: true
+   #public-client: false
+   #cors: true 
+
+spring:
+   jackson:
+      mapper:
+         default_view_inclusion: true
+      serialization:
+         WRITE_NULL_MAP_VALUES: false
