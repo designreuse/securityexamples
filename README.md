@@ -5,10 +5,12 @@
 ### Services
 
 The example consists of the following services
-- Laboratory-Service (Port:8080): REST-Service, verwaltet Ressource LaboratoryResult
-- Patient-Service (Port: 8081):  REST-Service, verwaltet Ressource Patient
+- Laboratory-Service (Port:8080): REST-Service, manages Ressource LaboratoryResult
+- Patient-Service (Port: 8081):  REST-Service, manages Ressource Patient
 - Keycloak (Port: 8180): Authentication and Identity Managment
 - Angular-Client (Port: 4200): Presentation of Laboratory Results and Patients
+- Eureka (Port: 8761): Discovery Service
+- Config-Server (Port: 8888): Spring Cloud Config Server
 
 ![Overview](overview.png)
 
@@ -269,13 +271,28 @@ export class AuthService {
   }
 }
 ````
+
+## Config Server
+Every service receives its configurations properties from the configuration service. The configurations are currently stored in this git-repository in subdirectory application-config.
+
+### Encryption of Properties
+
+Single properties can be stored encrypted with prefix “{cipher}”. The config-server provides an endpoint for encryption (/encrypt) and decryption (/decrypt). For configuring encrypted properties I followed: https://www.baeldung.com/spring-cloud-configuration
+
+```
+keycloak.credentials.secret={cipher}AgAvqRl5kLVGs4kz2F+9hZK3TJcFRLNt6Q+thrnpW+sUQF
+```
+
+
 ## Setup Sample Application
 1. Start a standalone version of keycloak
    1. Configure keycloak to run on port 8180 (/standalone/configuration/standalone.xml --> socket.binding.port=8180)
    2. Import realm from keycloak-folder
-2. Run laboratory-service with mvn spring-boot:run
-3. Run patient-service with mvn spring-boot:run
-4. Run angular-client
+2. Run config-service with mvn spring-boot:run
+3. Run eureka-service with mvn spring-boot:run
+4. Run laboratory-service with mvn spring-boot:run
+5. Run patient-service with mvn spring-boot:run
+6. Run angular-client
    1. Install node
    2. run npm install
    3. run ng-serve --open
@@ -316,6 +333,9 @@ export class AuthService {
 4. Keycloak Authorization
 5. Webclient Authentication without Javascript Adapter
 6. Service to Service authentication
+7. Authentication at Proxy
+8. Keycloak Authentication for Eureka and Config-Server
+9. Keycloak Custom Authentication Provider
 
 
 
