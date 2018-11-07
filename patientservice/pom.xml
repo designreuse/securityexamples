@@ -30,7 +30,6 @@
 			<groupId>at.scch</groupId>
 			<artifactId>securitylibary</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
