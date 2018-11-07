@@ -13,6 +13,7 @@ import org.springframework.cloud.config.client.ConfigClientProperties;
 import org.springframework.cloud.config.client.ConfigServicePropertySourceLocator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -25,12 +26,14 @@ import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @Order(Ordered.LOWEST_PRECEDENCE)
+@EnableOAuth2Client
 public class CustomConfigServiceBootstrapConfiguration {
 	
 	@Value("${spring.cloud.config.client.oauth2.client-id}")
@@ -64,6 +67,7 @@ public class CustomConfigServiceBootstrapConfiguration {
 	}
 	
 	@Bean
+	@Primary
     public ConfigServicePropertySourceLocator configServicePropertySourceLocator() {
 		ConfigClientProperties clientProperties = configClientProperties();
 		ConfigServicePropertySourceLocator configServicePropertySourceLocator = new ConfigServicePropertySourceLocator(
@@ -75,10 +79,11 @@ public class CustomConfigServiceBootstrapConfiguration {
 	
 	private RestTemplate customRestTemplate(ConfigClientProperties clientProperties) {
 		Map<String, String> headers = new HashMap<>();
-		headers.put("Authorization", "Bearer:" + bearerToken);
+		headers.put("Authorization", "Bearer " + bearerToken);
 		
 		RestTemplate template = new RestTemplate();
-		template.setInterceptors(Arrays.<ClientHttpRequestInterceptor> asList(new GenericRequestHeaderInterceptor(headers)));
+		//template.setInterceptors(Arrays.<ClientHttpRequestInterceptor> asList(new GenericRequestHeaderInterceptor(headers)));
+		template.getInterceptors().add(new GenericRequestHeaderInterceptor(headers));
 		return template;
 		
 	}
@@ -86,7 +91,6 @@ public class CustomConfigServiceBootstrapConfiguration {
 	@Bean
 	public ConfigClientProperties configClientProperties() {
 		ConfigClientProperties client = new ConfigClientProperties(this.environment);
-		System.out.println("test");
 		client.setEnabled(false);
 
 		return client;
