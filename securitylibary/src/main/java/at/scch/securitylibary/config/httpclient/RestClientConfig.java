@@ -1,4 +1,4 @@
-package at.scch.securitylibary.config;
+package at.scch.securitylibary.config.httpclient;
 
 import org.keycloak.adapters.springsecurity.client.KeycloakClientRequestFactory;
 import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;

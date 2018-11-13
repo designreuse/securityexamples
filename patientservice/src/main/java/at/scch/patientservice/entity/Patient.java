@@ -2,8 +2,8 @@ package at.scch.patientservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import at.scch.securitylibary.config.SecuredEntityViewPolicy;
-import at.scch.securitylibary.config.Views;
+import at.scch.securitylibary.config.jsonview.SecuredEntityViewPolicy;
+import at.scch.securitylibary.config.jsonview.Views;
 
 @SecuredEntityViewPolicy(value = "PatientViewPolicy")
 public class Patient {

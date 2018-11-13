@@ -3,8 +3,8 @@ package at.scch.laboratoryservice.config;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import at.scch.securitylibary.config.JsonViewCalculator;
-import at.scch.securitylibary.config.Views;
+import at.scch.securitylibary.config.jsonview.JsonViewCalculator;
+import at.scch.securitylibary.config.jsonview.Views;
 import at.scch.securitylibary.util.AuthorityChecker;
 
 @Component

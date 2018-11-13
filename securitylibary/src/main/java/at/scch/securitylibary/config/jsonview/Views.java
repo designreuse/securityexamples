@@ -1,4 +1,4 @@
-package at.scch.securitylibary.config;
+package at.scch.securitylibary.config.jsonview;
 
 public class Views {
 	 public interface Anonymous {}

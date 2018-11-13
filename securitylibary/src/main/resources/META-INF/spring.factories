@@ -1,0 +1,1 @@
+org.springframework.cloud.bootstrap.BootstrapConfiguration=at.scch.securitylibary.config.httpclient.AccessTokenResolver,at.scch.securitylibary.config.httpclient.KeycloakConfigServerConfiguration
