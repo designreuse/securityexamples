@@ -1,1 +1,2 @@
-org.springframework.cloud.bootstrap.BootstrapConfiguration=at.scch.securitylibary.config.httpclient.AccessTokenResolver,at.scch.securitylibary.config.httpclient.KeycloakConfigServerConfiguration
+org.springframework.cloud.bootstrap.BootstrapConfiguration=at.scch.securitylibary.config.httpclient.AccessTokenResolver,at.scch.securitylibary.config.httpclient.KeycloakConfigServerConfiguration,at.scch.securitylibary.config.httpclient.KeycloakEurekaConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=at.scch.securitylibary.config.KeycloakConfig

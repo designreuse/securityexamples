@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.cloud.config.client.ConfigClientProperties;
 import org.springframework.cloud.config.client.ConfigServicePropertySourceLocator;
 import org.springframework.context.annotation.Bean;
@@ -16,8 +17,10 @@ import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.web.client.RestTemplate;
 
+
 @Configuration
 @Order(Ordered.LOWEST_PRECEDENCE)
+@ConditionalOnMissingClass("org.springframework.cloud.config.server.ConfigServerApplication")
 public class KeycloakConfigServerConfiguration {
 	
 	private String bearerToken;
@@ -35,6 +38,7 @@ public class KeycloakConfigServerConfiguration {
 	
 	@Bean
 	@Primary
+	@ConditionalOnMissingClass("org.springframework.cloud.config.server.ConfigServerApplication")
     public ConfigServicePropertySourceLocator configServicePropertySourceLocator() {
 		ConfigClientProperties clientProperties = configClientProperties();
 		ConfigServicePropertySourceLocator configServicePropertySourceLocator = new ConfigServicePropertySourceLocator(
@@ -54,8 +58,9 @@ public class KeycloakConfigServerConfiguration {
 		return template;
 		
 	}
-
+	
 	@Bean
+	@ConditionalOnMissingClass("org.springframework.cloud.config.server.ConfigServerApplication")
 	public ConfigClientProperties configClientProperties() {
 		ConfigClientProperties client = new ConfigClientProperties(this.environment);
 		client.setEnabled(false);

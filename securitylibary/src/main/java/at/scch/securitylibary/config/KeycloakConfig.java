@@ -3,17 +3,16 @@ package at.scch.securitylibary.config;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakSecurityComponents;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
-import org.keycloak.adapters.springsecurity.client.KeycloakClientRequestFactory;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticatedActionsFilter;
 import org.keycloak.adapters.springsecurity.filter.KeycloakAuthenticationProcessingFilter;
 import org.keycloak.adapters.springsecurity.filter.KeycloakPreAuthActionsFilter;
 import org.keycloak.adapters.springsecurity.filter.KeycloakSecurityContextRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,13 +22,10 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
 @EnableWebSecurity
 @ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
+@ConditionalOnMissingBean(value=KeycloakWebSecurityConfigurerAdapter.class)
 public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
-	
-	@Autowired
-    public KeycloakClientRequestFactory keycloakClientRequestFactory;
 	
     // Submits the KeycloakAuthenticationProvider to the AuthenticationManager
     @Autowired
@@ -75,8 +71,7 @@ public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
    				registry.addMapping("/**").allowedMethods("PUT", "DELETE", "GET", "OPTIONS", "POST", "PATCH");
    			}
    		};
-   	}
-    
+   	}    
     
     @Bean
     public FilterRegistrationBean<KeycloakAuthenticationProcessingFilter> keycloakAuthenticationProcessingFilterRegistrationBean(

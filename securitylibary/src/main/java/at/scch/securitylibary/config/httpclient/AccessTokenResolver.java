@@ -28,11 +28,11 @@ public class AccessTokenResolver {
 		return null;
 	}
 	
-    @Value("${spring.cloud.config.client.oauth2.client-id}")
+    @Value("${auth.client-id}")
     private String clientId;
-    @Value("${spring.cloud.config.client.oauth2.client-secret}")
+    @Value("${auth.client-secret}")
     private String clientSecret;
-    @Value("${spring.cloud.config.client.oauth2.access-token-uri}")
+    @Value("${auth.access-token-uri}")
     private String authEndpoint;
 	
 	@SuppressWarnings("rawtypes")
