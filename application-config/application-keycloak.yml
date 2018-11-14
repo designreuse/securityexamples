@@ -1,10 +1,12 @@
 keycloak:
    auth-server-url: http://localhost:8180/auth/
    realm: stiwa
-   resource: ${spring.application.name}
    ssl-required: external
    principal-attribute: preferred_username
    use-resource-role-mappings: true
+   resource: ${auth.client-id}
+   credentials:
+      secret: ${auth.client-secret}
    #bearer-only: true
    #public-client: false
    #cors: true 
