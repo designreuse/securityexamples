@@ -21,7 +21,7 @@ public class KeycloakFeignConfiguration{
 
 			@Override
 			public void apply(RequestTemplate template) {
-				String token = accessTokenResolver.getAccessTokenOfService();
+				String token = accessTokenResolver.getAccessTokenOfUser();
 				if(token!=null) {
 					template.header(AUTHORIZATION_HEADER, "Bearer " + token);
 				}
