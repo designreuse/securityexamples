@@ -24,7 +24,7 @@ public class KeycloakEurekaConfiguration {
 	
 	@Primary
 	@Bean
-	DiscoveryClientOptionalArgs test() {
+	DiscoveryClientOptionalArgs discoveryClientArgs() {
 		
 		Collection<ClientFilter> filters = new ArrayList<>();
 		filters.add(new ClientFilter() {
