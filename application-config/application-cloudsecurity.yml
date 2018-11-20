@@ -1,0 +1,24 @@
+auth:
+  base-url: http://localhost:8180/auth
+  realm: stiwa
+  realm-url: ${auth.base-url}/realms/${auth.realm}
+  jwk-set-uri: ${auth.realm-url}/protocol/openid-connect/certs
+
+
+security:
+  oauth2:
+    client:
+      clientId: ${auth.client-id}
+      clientSecret: ${auth.client-secret}
+      accessTokenUri: ${auth.access-token-uri}
+      userAuthorizationUri: ${auth.realm-url}/protocol/openid-connect/auth
+      scope: openid, profile, roles
+    resource:
+      user-info-uri: ${auth.realm-url}/protocol/openid-connect/userinfo
+
+spring:
+   jackson:
+      mapper:
+         default_view_inclusion: true
+      serialization:
+         WRITE_NULL_MAP_VALUES: false
