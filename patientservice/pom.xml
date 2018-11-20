@@ -28,8 +28,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>at.scch</groupId>
-			<artifactId>securitylibary</artifactId>
-			<version>${project.version}</version>
+			<artifactId>cloudsecuritylibrary</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>

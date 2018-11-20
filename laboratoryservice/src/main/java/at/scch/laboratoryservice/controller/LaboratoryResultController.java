@@ -3,8 +3,6 @@ package at.scch.laboratoryservice.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,8 +20,6 @@ public class LaboratoryResultController {
 	
 	@RequestMapping(value = "api/laboratory-results", method = RequestMethod.GET)
 	Collection<LaboratoryResult> getAllResults(@RequestParam(required = false) Long patientsvnr){
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Object principal = auth.getPrincipal();
 		return laboratoryResultService.getAllResults(patientsvnr);
 	}
 	
