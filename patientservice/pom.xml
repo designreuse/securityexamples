@@ -28,7 +28,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>at.scch</groupId>
-			<artifactId>cloudsecuritylibrary</artifactId>
+			<artifactId>securitylibary</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
