@@ -1,5 +1,5 @@
 auth:
-  base-url: http://localhost:8180/auth
+  base-url: http://webs:8180/auth
   realm: stiwa
   realm-url: ${auth.base-url}/realms/${auth.realm}
   jwk-set-uri: ${auth.realm-url}/protocol/openid-connect/certs
