@@ -1,5 +1,5 @@
 keycloak:
-   auth-server-url: http://localhost:8180/auth/
+   auth-server-url: http://webs:8180/auth/
    realm: stiwa
    ssl-required: external
    principal-attribute: preferred_username
